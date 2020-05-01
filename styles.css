@@ -17,7 +17,7 @@ i {
   width: 100%;
 }
 .wrapper {
-  width: 1100px;
+  width: 900px;
   margin: 50px auto;
   height: 90vh;
   display: flex;
@@ -92,9 +92,7 @@ i {
 .result {
   background-color: #46B5FF;
 }
-.calculateIt {
-  transition: .5 ease;
-}
+
 .disabled {
   opacity: .5
 }
