@@ -1,10 +1,16 @@
 const btns = document.querySelectorAll(".calc");
 const final = document.querySelector(".final");
 const calculate = document.querySelector(".calculateIt");
+
+const controlBtns = [".result", ".plus", ".minus", ".multiply", ".divide", ".pow", ".multiInvers", ".squareRoot", ".percent", ".clearAll", ".clear", ".backspace"];
+const controlFn = [result, add, substract, multiply, divide, power, multiInvers, squareRoot, percent, deleteAll, deleteAll, backspace];
+
+for (var i = 0; i < controlFn.length; i++) {
+  document.querySelector(controlBtns[i]).addEventListener('click', controlFn[i]);
+};
+
 let finalArr = [];
 let calculatedItems = [];
-
-
 
 // NASŁUCHIWANIE NUMERÓW.
 btns.forEach((btn) => {
@@ -83,11 +89,22 @@ function result() {
     });
     resArr.pop();
     // Dodajemy liczby
-    const sum = resArr.reduce(function(a, b) {
-      return a + b;
-    }, 0);
-    final.innerText = sum;
+    function addition(arr) {
+      let total = arr[0];
+      for (var i = 1, length = arr.length; i < length; i++) {
+        total += arr[i];
+      }
+      return total;
+    }
+    if (equal.includes(".") !== true) {
+      final.innerText = addition(resArr);
+      final.innerText = final.innerText.slice(0, 10);
+    } else {
+      final.innerText = addition(resArr).toFixed(2);
+    }
   }
+
+
   if (calculate.innerText.slice(-1) === "-") {
     substract();
     let equal = calculate.innerText;
@@ -107,6 +124,7 @@ function result() {
     }
     if (equal.includes(".") !== true) {
       final.innerText = subtraction(resArr);
+      final.innerText = final.innerText.slice(0, 10);
     } else {
       final.innerText = subtraction(resArr).toFixed(2);
     }
@@ -132,6 +150,7 @@ function result() {
 
     }
     final.innerText = multiplyNumbers(resArr);
+    final.innerText = final.innerText.slice(0, 10);
   }
 
   if (calculate.innerText.slice(-1) === "/") {
@@ -152,24 +171,71 @@ function result() {
 
     }
     final.innerText = multiplyNumbers(resArr);
+    final.innerText = final.innerText.slice(0, 10);
   }
+  calculate.innerText = calculate.innerText.slice(0, -1) + '=';
+
+
 }
 
 //POTEGOWANIE
 function power() {
   calculate.innerText = "sqr(" + finalArr.join('') + ")";
-  final.innerText = Math.pow(finalArr.join(''),2);
+  console.log(final.innerHTML)
+  final.innerHTML = Math.pow(finalArr.join(''), 2);
+  console.log(final)
 }
 
 //LICZBA ODWROTNA
-function multiInvers () {
-calculate.innerText = "1/(" + finalArr.join('') + ")";
-final.innerText = 1/finalArr.join('');
+function multiInvers() {
+  if (finalArr.length !== 0 && final.innerHTML !== "0" || final.innerHTML !== "0.") {
+    calculate.innerText = "1/(" + finalArr.join('') + ")";
+    final.innerText = 1 / finalArr.join('');
+  } else {
+    final.innerText = "Nie dziel przez zero";
+  }
 }
+
 //PIERWIASTEK
-function squareRoot () {
-calculate.innerText = "√/(" + finalArr.join('') + ")";
-final.innerText = Math.sqrt(finalArr.join(''));
+function squareRoot() {
+  calculate.innerText = "√/(" + finalArr.join('') + ")";
+  final.innerText = Math.sqrt(finalArr.join(''));
+}
+
+//PROCENTY
+function percent() {
+
+  const sign = calculatedItems[0].slice(-1);
+  const divMult = finalArr.join('') / 100;
+  const percentOf = calculatedItems[0].replace(sign, "");
+  const plusMinus = percentOf * divMult;
+  let equals;
+
+  switch (sign) {
+    case "+":
+      equals = parseFloat(percentOf) + parseFloat(plusMinus);
+      calculate.innerHTML = percentOf + "+" + finalArr.join('') + "%=";
+      break;
+    case "-":
+      equals = parseFloat(percentOf) - parseFloat(plusMinus);
+      calculate.innerHTML = percentOf + "-" + finalArr.join('') + "%=";
+      break;
+    case "x":
+      equals = parseFloat(percentOf) * parseFloat(divMult);
+      calculate.innerHTML = percentOf + "x" + finalArr.join('') + "%=";
+      break;
+    case "/":
+      equals = parseFloat(percentOf) / parseFloat(divMult);
+      calculate.innerHTML = percentOf + "/" + finalArr.join('') + "%=";
+      // final.innerHTML = equals;
+      break;
+    default:
+  }
+  if(equals%1 !== 0) {
+    final.innerHTML = equals.toFixed(2);
+  } else {
+    final.innerHTML = equals.toFixed();
+  }
 }
 
 
@@ -191,19 +257,3 @@ function backspace() {
     final.innerText = "0";
   }
 }
-
-
-
-
-
-
-document.querySelector(".result").addEventListener('click', result);
-document.querySelector(".plus").addEventListener('click', add);
-document.querySelector(".minus").addEventListener('click', substract);
-document.querySelector(".multiply").addEventListener('click', multiply);
-document.querySelector(".divide").addEventListener('click', divide);
-document.querySelector(".pow").addEventListener('click', power);
-document.querySelector(".multiInvers").addEventListener('click', multiInvers);
-document.querySelector(".squareRoot").addEventListener('click', squareRoot);
-document.querySelector(".clearAll").addEventListener('click', deleteAll);
-document.querySelector(".backspace").addEventListener('click', backspace);
