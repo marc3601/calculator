@@ -152,24 +152,6 @@ button:hover sup {
   }
 }
 
-@media only screen and (min-width: 1000px) {
-  .wrapper {
-    width: 80vw;
-  }
-}
-
-@media only screen and (min-width: 1300px) {
-  .wrapper {
-    width: 60vw;
-  }
-}
-
-@media only screen and (min-width: 1800px) {
-  .wrapper {
-    width: 40vw;
-  }
-}
-
 @media only screen and (max-width: 1000px) {
   .wrapper {
     width: 90vw;
@@ -182,5 +164,23 @@ button:hover sup {
 @media only screen and (max-width: 500px) {
   .wrapper {
     width: 100vw;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .wrapper {
+    width: 40vw;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .wrapper {
+    width: 60vw;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .wrapper {
+    width: 80vw;
   }
 }
