@@ -133,9 +133,9 @@ button:hover sup {
   transition: 0.5s ease-out;
 }
 @media only screen and (max-width: 1200px) {
-  .wrapper {
+  /* .wrapper {
     height: 80vh;
-  }
+  } */
   .keybord * {
     font-size: 1rem;
     height: 9vh;
@@ -152,8 +152,35 @@ button:hover sup {
   }
 }
 
+@media only screen and (min-width: 1000px) {
+  .wrapper {
+    width: 80vw;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .wrapper {
+    width: 60vw;
+  }
+}
+
 @media only screen and (min-width: 1800px) {
   .wrapper {
     width: 40vw;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .wrapper {
+    width: 90vw;
+  }
+  .calculator {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .wrapper {
+    width: 100vw;
   }
 }
