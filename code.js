@@ -149,6 +149,9 @@ function result() {
     substract();
     let equal = calculate.innerText;
     let newArr = equal.split("-");
+    while(newArr[0] === "") {
+      newArr.shift()
+    };
     newArr.forEach((item) => {
       resArr.push(parseFloat(item));
     });
