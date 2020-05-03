@@ -41,7 +41,7 @@ for (let i = 0; i < controlFn.length; i++) {
 
 let finalArr = [];
 let calculatedItems = [];
-let dot = [];
+
 
 // NASŁUCHIWANIE NUMERÓW.
 btns.forEach((btn) => {
@@ -52,13 +52,13 @@ btns.forEach((btn) => {
       }
     }
     if (btn.innerText === "." && finalArr.length === 0) {
-      finalArr.push("0.");
-      dot.push(".");
-      console.log(dot);
-    } else if (btn.innerText === ".") {
-      finalArr.push(".");
-      dot.push(".");
-      console.log(dot);
+
+        finalArr.push("0.")
+
+    } else if (btn.innerText === "." && final.innerText.includes(".") === false) {
+
+        finalArr.push(".")
+
     }
     final.innerText = finalArr.join("");
   });
@@ -315,7 +315,7 @@ function backspace() {
 
 // KOD ALERTÓW
 
-const alert1 = setTimeout(function () {
+const alert1 = setTimeout(function() {
   document.querySelector(".alert1").classList.add("pop");
 }, 250);
 
@@ -325,7 +325,7 @@ document
     document.querySelector(".alert1").classList.remove("pop");
   });
 
-const alert2 = setTimeout(function () {
+const alert2 = setTimeout(function() {
   document.querySelector(".alert2").classList.add("pop");
 }, 500);
 
