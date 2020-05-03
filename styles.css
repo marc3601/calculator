@@ -132,9 +132,19 @@ button:hover sup {
   left: 20px;
   transition: 0.5s ease-out;
 }
+
+/* MEDIA QUERIES */
+
+@media only screen and (min-width: 1800px) {
+  .wrapper {
+    width: 40vw;
+  }
+}
+
+
 @media only screen and (max-width: 1200px) {
   .wrapper {
-    height: 80vh;
+    width: 70vw;
   }
   .keybord * {
     font-size: 1rem;
@@ -149,5 +159,23 @@ button:hover sup {
   .alert2 p,
   .alert3 p {
     font-size: 0.7rem;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .wrapper {
+    width: 90vw;
+  }
+  .calculator {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .wrapper {
+    width: 100vw;
+  }
+  .display {
+    height: 40%;
   }
 }
