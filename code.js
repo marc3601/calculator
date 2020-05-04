@@ -53,11 +53,11 @@ btns.forEach((btn) => {
     }
     if (btn.innerText === "." && finalArr.length === 0) {
 
-        finalArr.push("0.")
+      finalArr.push("0.")
 
     } else if (btn.innerText === "." && final.innerText.includes(".") === false) {
 
-        finalArr.push(".")
+      finalArr.push(".")
 
     }
     final.innerText = finalArr.join("");
@@ -149,7 +149,7 @@ function result() {
     substract();
     let equal = calculate.innerText;
     let newArr = equal.split("-");
-    while(newArr[0] === "") {
+    while (newArr[0] === "") {
       newArr.shift()
     };
     newArr.forEach((item) => {
@@ -311,8 +311,11 @@ function backspace() {
   if (finalArr.length > 1) {
     finalArr.pop();
     final.innerText = finalArr.join("");
-  } else {
-    final.innerText = "1";
+    console.log(finalArr);
+    console.log(final.innerText);
+  } else if (finalArr.length === 1) {
+      final.innerText = "0";
+      finalArr = [];
   }
 }
 
