@@ -61,6 +61,7 @@ btns.forEach((btn) => {
 
     }
     final.innerText = finalArr.join("");
+    console.log(final.innerText);
   });
 });
 
