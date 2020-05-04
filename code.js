@@ -311,8 +311,6 @@ function backspace() {
   if (finalArr.length > 1) {
     finalArr.pop();
     final.innerText = finalArr.join("");
-    console.log(finalArr);
-    console.log(final.innerText);
   } else if (finalArr.length === 1) {
       final.innerText = "0";
       finalArr = [];
