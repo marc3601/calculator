@@ -48,16 +48,23 @@ btns.forEach((btn) => {
   btn.addEventListener("click", () => {
     if (btn.innerText !== "+/-" && btn.innerText !== ".") {
       if (finalArr.length < 12) {
-        finalArr.push(btn.innerText);
+        if (btn.innerText === "0" && finalArr[0] !== "0") {
+          finalArr.push("0");
+        } else {
+          if (btn.innerText !== "0") {
+            finalArr.push(btn.innerText);
+          }
+
+        }
       }
     }
     if (btn.innerText === "." && finalArr.length === 0) {
 
-      finalArr.push("0.")
+      finalArr.push("0.");
 
     } else if (btn.innerText === "." && final.innerText.includes(".") === false) {
 
-      finalArr.push(".")
+      finalArr.push(".");
 
     }
     final.innerText = finalArr.join("");
@@ -280,6 +287,7 @@ function percent() {
   } else {
     final.innerHTML = equals.toFixed();
   }
+
 }
 
 //LICZBY UJEMNE
@@ -311,9 +319,11 @@ function backspace() {
   if (finalArr.length > 1) {
     finalArr.pop();
     final.innerText = finalArr.join("");
+    console.log(finalArr);
+    console.log(final.innerText);
   } else if (finalArr.length === 1) {
-      final.innerText = "0";
-      finalArr = [];
+    final.innerText = "0";
+    finalArr = [];
   }
 }
 
