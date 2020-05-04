@@ -308,11 +308,11 @@ function deleteAll() {
 
 // BACKSPACE
 function backspace() {
-  if (finalArr.length > 0) {
+  if (finalArr.length > 1) {
     finalArr.pop();
     final.innerText = finalArr.join("");
   } else {
-    final.innerText = "0";
+    final.innerText = "1";
   }
 }
 
